@@ -127,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comunes.cs" />
+    <Compile Include="Especifico.cs" />
+    <Compile Include="EXO_136.cs" />
+    <Compile Include="EXO_DocSII.cs" />
     <Compile Include="EXO_150.cs" />
     <Compile Include="EXO_41.cs" />
     <Compile Include="EXO_42.cs" />
@@ -172,8 +175,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>C:\DESARROLLO\Certest\Copio64.bat
-</PostBuildEvent>
+    <PostBuildEvent>C:\DESARROLLO\Certest_GIT\Copio64_Carlos_Certest.BAT</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

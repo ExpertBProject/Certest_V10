@@ -11,17 +11,14 @@ using Microsoft.VisualBasic.CompilerServices;
 
 namespace Cliente
 {
-//    public class VarGlobal
-//    {
-//        public static int SumDec;
-//        public static int PriceDec;
-//        public static int RateDec;
-//        public static int QtyDec;
-//        public static int PercentDec;
-//        public static int MeasureDec;
-//        public static string SepMill;
-//        public static string SepDec;       
-//    }
+        public enum TipoDoc {Compras, Ventas }
+   public struct TiposForm
+    {
+        public string TipoEx;
+        public string TablaPrincipal;
+        public TipoDoc oTipoDoc;
+        public string Descripcion;
+    }
 
 
     public class Conversiones
@@ -214,6 +211,30 @@ namespace Cliente
 
             //return cQuery;
         }
+
+        public static string sqlCUFD(string cTabla, string cCampo)
+        {
+            string sql = "";
+            if (Matriz.lgHANA)
+            {
+                sql = "SELECT T1.\"FldValue\", T1.\"Descr\" FROM \"CUFD\" T0 ";
+                sql += " INNER JOIN \"UFD1\" T1 ON T0.\"TableID\" = T1.\"TableID\" AND T1.\"FieldID\" = T0.\"FieldID\" ";
+                sql += " WHERE T0.\"TableID\" = '##TABLA' AND T0.\"AliasID\" = '##CAMPO' ";
+
+            }
+            else
+            {
+                sql = "SELECT T1.FldValue, T1.Descr FROM CUFD T0 ";
+                sql += " INNER JOIN UFD1 T1 ON T0.TableID = T1.TableID AND T1.FieldID = T0.FieldID ";
+                sql += " WHERE T0.TableID = '##TABLA' AND T0.AliasID = '##CAMPO' ";
+
+            }            
+            sql = sql.Replace("##TABLA", cTabla).Replace("##CAMPO", cCampo);
+
+            return sql;
+        }
+
+
         
     }
 
